@@ -35,3 +35,11 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Execitables
+##############
+Awesomemoments.com
+
+#GoLand files
+#############
+.idea
