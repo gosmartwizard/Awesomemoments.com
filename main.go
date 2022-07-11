@@ -22,6 +22,7 @@ func pathHandler(w http.ResponseWriter, r *http.Request) {
 	case "/contact":
 		contactHandler(w, r)
 	default:
+		http.Error(w, " page not found", http.StatusNotFound)
 	}
 }
 
