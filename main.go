@@ -26,8 +26,13 @@ func pathHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+type Router struct{}
+
+func (router Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	pathHandler(w, r)
+}
 func main() {
-	http.HandleFunc("/", pathHandler)
+	var router Router
 	fmt.Println("Starting the server on port:4949")
-	http.ListenAndServe(":4949", nil)
+	http.ListenAndServe(":4949", router)
 }
