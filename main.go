@@ -32,7 +32,6 @@ func (router Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	pathHandler(w, r)
 }
 func main() {
-	var router Router
 	fmt.Println("Starting the server on port:4949")
-	http.ListenAndServe(":4949", router)
+	http.ListenAndServe(":4949", http.HandlerFunc(pathHandler))
 }
