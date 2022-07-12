@@ -21,11 +21,14 @@ func main() {
 	tpl = views.Must(views.Parse(filepath.Join("templates", "faq.gohtml")))
 	r.Get("/faq", controllers.StaticHandler(tpl))
 
+	tpl = views.Must(views.Parse(filepath.Join("templates", "helpline.gohtml")))
+	r.Get("/helpline", controllers.StaticHandler(tpl))
+
 	r.NotFound(func(writer http.ResponseWriter, request *http.Request) {
 		http.Error(writer, "Page not found", http.StatusNotFound)
 	})
 
 	fmt.Println("Starting the server on port:4949")
-	
+
 	http.ListenAndServe(":4949", r)
 }
