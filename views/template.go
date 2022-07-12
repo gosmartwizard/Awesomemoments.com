@@ -39,8 +39,8 @@ func (t Template) Execute(w http.ResponseWriter, data interface{}) {
 	}
 }
 
-func ParseFS(fs fs.FS, pattern string) (Template, error) {
-	htmlTpl, err := template.ParseFS(fs, pattern)
+func ParseFS(fs fs.FS, pattern ...string) (Template, error) {
+	htmlTpl, err := template.ParseFS(fs, pattern...)
 	if err != nil {
 		return Template{}, fmt.Errorf("parsing template: %w", err)
 	}
