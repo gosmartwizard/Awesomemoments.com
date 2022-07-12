@@ -4,24 +4,24 @@ import (
 	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/gosmartwizard/Awesomemoments.com/controllers"
+	"github.com/gosmartwizard/Awesomemoments.com/templates"
 	"github.com/gosmartwizard/Awesomemoments.com/views"
 	"net/http"
-	"path/filepath"
 )
 
 func main() {
 	r := chi.NewRouter()
 
-	tpl := views.Must(views.Parse(filepath.Join("templates", "home.gohtml")))
+	tpl := views.Must(views.ParseFS(templates.FS, "home.gohtml"))
 	r.Get("/", controllers.StaticHandler(tpl))
 
-	tpl = views.Must(views.Parse(filepath.Join("templates", "contact.gohtml")))
+	tpl = views.Must(views.ParseFS(templates.FS, "contact.gohtml"))
 	r.Get("/contact", controllers.StaticHandler(tpl))
 
-	tpl = views.Must(views.Parse(filepath.Join("templates", "faq.gohtml")))
+	tpl = views.Must(views.ParseFS(templates.FS, "faq.gohtml"))
 	r.Get("/faq", controllers.StaticHandler(tpl))
 
-	tpl = views.Must(views.Parse(filepath.Join("templates", "helpline.gohtml")))
+	tpl = views.Must(views.ParseFS(templates.FS, "helpline.gohtml"))
 	r.Get("/helpline", controllers.StaticHandler(tpl))
 
 	r.NotFound(func(writer http.ResponseWriter, request *http.Request) {
